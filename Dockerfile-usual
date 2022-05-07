@@ -1,0 +1,14 @@
+# 通用docker构建文件
+FROM golang:latest
+
+LABEL stage=gobuilder
+
+ENV GOPROXY=https://goproxy.cn,direct
+ENV TZ=Asia/Shanghai
+
+RUN apt update -y \
+    && apt install upx -y
+
+WORKDIR /build
+
+ENTRYPOINT ["./build-linux.sh"]
