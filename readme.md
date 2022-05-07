@@ -21,7 +21,7 @@ docker
 
 ```bash
 docker pull yunyizhiying/tmp-code
-docker run -itd  -p 127.0.0.1:8233:8233  tmp-code
+docker run -itd  -p 127.0.0.1:8233:8233 --name tmp-code  yunyizhiying/tmp-code
 ```
 
 ## demo
