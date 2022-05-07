@@ -82,5 +82,5 @@ func main() {
 		c.JSON(http.StatusOK, newCode)
 
 	})
-	r.Run("localhost:8233")
+	r.Run(":8233")
 }
