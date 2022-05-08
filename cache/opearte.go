@@ -15,8 +15,14 @@ func (that *Cache) Set(key interface{}, value interface{}, expire time.Duration)
 	})
 }
 
-func (that *Cache) Get(key interface{}) (interface{}, error) {
-	return that.C.Get(ctx, key)
+func (that *Cache) Get(key interface{}) (string, error) {
+	data, _, err := that.C.GetWithTTL(ctx, key)
+	// switch flag.T {
+	// case "redis":
+	// 	return data.(string), err
+	// }
+	//默认使用内存
+	return data.(string), err
 }
 
 func (that *Cache) Del(key interface{}) error {

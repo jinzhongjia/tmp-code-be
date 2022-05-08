@@ -1,7 +1,6 @@
 package tool
 
 import (
-	"fmt"
 	"strconv"
 	"sync"
 	"time"
@@ -79,7 +78,7 @@ func (w *Worker) ShortId() string {
 }
 
 func HandleTime(expire string) time.Duration {
-	fmt.Println(expire)
+
 	switch expire {
 	case data.Hour:
 		return time.Hour
