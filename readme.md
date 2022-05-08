@@ -17,6 +17,12 @@ docker run --rm -t -v d:\project\go\tmp-code:/build gobuilder:latest
 
 ## 部署
 
+image构建
+
+```bash
+docker build -t yunyizhiying/tmp-code:latest .
+```
+
 docker
 
 ```bash
