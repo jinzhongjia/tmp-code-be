@@ -1,6 +1,7 @@
 package cache
 
 import (
+	"context"
 	"log"
 	"time"
 	"tmp-code/flag"
@@ -37,13 +38,20 @@ func newBigCache() *cache.Cache {
 }
 
 func newRedis() *cache.Cache {
-	redisStore := store.NewRedis(redis.NewClient(&redis.Options{
+	r := redis.NewClient(&redis.Options{
 		Addr:     flag.RedisAddr,
 		Username: flag.RedisUserName,
 		Password: flag.RedisPasswd,
 		// 默认redis有16个数据库，这里使用15
 		DB: 15,
-	}), nil)
+	})
+	// 进行一次ping检测，判断连接是否正常
+	_, err := r.Ping(context.Background()).Result()
+	if err != nil {
+		// 如果ping出问题，直接退出
+		log.Fatal("the redis connect failed! ", err)
+	}
+	redisStore := store.NewRedis(r, nil)
 
 	return cache.New(redisStore)
 }

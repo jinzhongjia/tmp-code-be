@@ -2,7 +2,6 @@ package flag
 
 import (
 	"flag"
-	"fmt"
 
 	"gopkg.in/ini.v1"
 )
@@ -20,7 +19,7 @@ func init() {
 	flag.StringVar(&RedisUserName, "redisUserName", "", "The UserName of redis")
 	flag.StringVar(&RedisPasswd, "redisPasswd", "", "The Passwd of redis")
 	flag.Parse()
-	fmt.Println("name", RedisUserName, "name")
+
 	// 读取conf.ini配置文件
 	cfg, err := ini.Load("conf.ini")
 	if err == nil {
@@ -28,12 +27,7 @@ func init() {
 		redis := cfg.Section("redis")
 		RedisAddr = redis.Key("addr").String()
 		RedisUserName = redis.Key("userName").String()
-		if RedisUserName == "" {
-
-		}
-		fmt.Println("name", RedisUserName, "name")
 		RedisPasswd = redis.Key("passwd").String()
-		fmt.Println("passwd", RedisPasswd, "passwd")
 	}
 
 }
