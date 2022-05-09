@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"tmp-code/cache"
 	"tmp-code/data"
@@ -49,7 +48,7 @@ func main() {
 
 		// 过期时间
 		expire := tool.HandleTime(c.PostForm("expire"))
-		fmt.Println(expire)
+
 		// 获取一个id
 		id := work.ShortId()
 
