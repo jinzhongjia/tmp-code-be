@@ -76,8 +76,8 @@ func main() {
 		}
 
 		newCode := data.TmpCode{
-			Code: code,
-			Type: typeV,
+			Code: code.(string),
+			Type: typeV.(string),
 		}
 		c.JSON(http.StatusOK, newCode)
 
